@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+@layer base {
+  html,
+  body {
+    @apply font-inter text-primary-black;
+
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar - Desktop */
+  @media (max-width: 768px) {
+    * {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  /* Desktop - thin overlay scrollbar */
+  @media (min-width: 769px) {
+    *::-webkit-scrollbar {
+      inline-size: 8px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 20%);
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 0, 0, 40%);
+    }
+  }
+}
+
+/* Component Classes from tw-input.css */
+@layer components {
+  .container {
+    @apply mx-auto max-w-[1350px] px-4 md:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-3xl lg:text-4xl font-semibold text-primary-black text-center leading-10;
+  }
+
+  .section-subtitle {
+    @apply text-sm md:text-base text-primary-gray text-center leading-6;
+  }
+
+  .section-padding {
+    @apply py-6 sm:py-10 lg:py-20;
+  }
+
+  .login-card {
+    @apply bg-white rounded-xl drop-shadow-theme p-4 md:p-7 mb-6 border-border-primary border;
+  }
+
+  /* Buttons */
+  .primary-button {
+    @apply bg-primary-black cursor-pointer disabled:bg-primary-black/20 disabled:cursor-not-allowed text-white font-medium py-2 md:py-3 px-10 rounded-lg hover:bg-gray-800 transition-colors leading-6.5;
+  }
+
+  .primary-button-outline {
+    @apply bg-white border border-gray-300 text-primary-black cursor-pointer disabled:bg-primary-black/20 disabled:cursor-not-allowed font-medium py-2 md:py-3 px-10 rounded-lg hover:bg-gray-50 transition-colors leading-6;
+  }
+
+  .danger-button {
+    @apply px-3 py-2 cursor-pointer text-sm text-white bg-error border border-error rounded-lg hover:bg-error/90 transition-colors;
+  }
+
+  .danger-button-outline {
+    @apply px-3 py-2 cursor-pointer text-sm text-error border border-error rounded-lg hover:bg-error/10 transition-colors;
+  }
+
+  /* Form Control */
+  .form-control {
+    @apply w-full appearance-none px-3 py-2 sm:px-4 sm:py-3 border border-border-primary placeholder:text-primary-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-black focus:border-transparent;
+  }
+
+  /* Product Card */
+  .product-card {
+    @apply bg-white relative rounded-lg overflow-hidden transition-shadow duration-300 shadow-[0px_1px_2px_-1px_#0000001A,0px_1px_3px_0px_#0000001A] hover:shadow-[0px_4px_6px_-1px_#0000001A,0px_2px_4px_-1px_#0000001A];
+  }
+
+  .product-card-discount-badge {
+    @apply absolute top-3 left-3 bg-error text-white text-xs px-2 py-1 rounded-lg z-[1px];
+  }
+
+  .product-card-wishlist-button {
+    @apply absolute cursor-pointer top-2 right-3 size-8 z-[1px] bg-white rounded-full flex items-center justify-center shadow-[0px_2px_4px_-2px_#0000001A,0px_4px_6px_-1px_#0000001A] hover:bg-gray-100 transition-colors;
+  }
+
+  .product-card-image {
+    @apply w-full h-48 sm:h-64 object-contain transition-transform duration-300;
+  }
+
+  .product-card-colors {
+    @apply w-4 h-4 rounded-full border-2 cursor-pointer;
+  }
+
+  /* Category Card */
+  .category-card {
+    @apply rounded-lg relative overflow-hidden shadow-[0px_1px_2px_-1px_#0000001A,0px_1px_3px_0px_#0000001A];
+  }
+
+  .category-card-image {
+    @apply w-full h-64 lg:h-80 object-cover transition-transform duration-300;
+  }
+
+  .category-card-overlay {
+    @apply absolute inset-0 flex flex-col bg-primary-black/60 text-white items-center justify-center duration-300;
+  }
+
+  .category-card-title {
+    @apply text-3xl;
+  }
+}
+
+/* Swiper Customization */
+@layer utilities {
+  .swiper-pagination-bullet {
+    @apply bg-white opacity-60 size-4;
+  }
+
+  .swiper-pagination-bullet-active {
+    @apply bg-primary-black opacity-100;
+  }
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+input::placeholder {
+  opacity: 0.7;
+}
+
+body.modal-open {
+  @apply overflow-hidden;
+}
