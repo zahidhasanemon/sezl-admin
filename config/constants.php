@@ -6,10 +6,9 @@ return [
     'pagination_per_page' => env('PAGINATION_PER_PAGE', 20),
     'enable_https' => env('ENABLE_HTTPS', false),
     'otp_expire_after' => env('OTP_EXPIRE_AFTER', '10'),
-    'app_url' => env('APP_URL', 'vuexy-admin.com'),
-    'admin_url' => env('ADMIN_URL', 'vuexy-admin.com'),
-    'contact_email' => env('CONTACT_EMAIL', 'contact@vuexy-admin.com'),
-    'mail_from_email' => env('MAIL_FROM_ADDRESS', 'info@vuexy-admin.com'),
+    'app_url' => env('APP_URL', 'sezl-admin.com'),
+    'contact_email' => env('CONTACT_EMAIL', 'contact@sezl-admin.com'),
+    'mail_from_email' => env('MAIL_FROM_ADDRESS', 'info@sezl-admin.com'),
     'settings' => [
         'site_name' => 'site_name',
         'site_email' => 'site_email',

@@ -1,6 +1,6 @@
 <script setup>
 import { useGenerateImageVariant } from '@core/composable/useGenerateImageVariant'
-import logoSrc from '@images/logo-full-black.svg?url'
+import logoSrc from '@images/logo.svg?url'
 import authV2ForgotPasswordIllustrationDark from '@images/pages/auth-v2-forgot-password-illustration-dark.png'
 import authV2ForgotPasswordIllustrationLight from '@images/pages/auth-v2-forgot-password-illustration-light.png'
 import authV2MaskDark from '@images/pages/misc-mask-dark.png'

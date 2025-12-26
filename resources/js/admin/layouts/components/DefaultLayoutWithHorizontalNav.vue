@@ -1,7 +1,6 @@
 <script setup>
 import navItems from '@/navigation/horizontal'
-import logoSrc from '@images/logo-full-black.svg?url'
-import shortLogoSrc from '@images/sa-logo-black.svg?url'
+import shortLogoSrc from '@images/logo.svg?url'
 
 // Components
 import Footer from '@/layouts/components/Footer.vue'
@@ -19,7 +18,8 @@ import { HorizontalNavLayout } from '@layouts'
 
         <h1 class="app-title font-weight-bold leading-normal text-xl text-capitalize">
           <!-- {{ themeConfig.app.title }} -->
-          <VImg :src="logoSrc" alt="logo" height="40" width="100" cover />
+          <!-- <VImg :src="logoSrc" alt="logo" height="40" width="100" cover /> -->
+          SEZL
         </h1>
       </RouterLink>
       <VSpacer />

@@ -4,7 +4,7 @@ import { breakpointsVuetifyV3 } from "@vueuse/core";
 import { VIcon } from "vuetify/components/VIcon";
 
 // ❗ Logo SVG must be imported with ?raw suffix
-import logo from "@images/sa-logo-white.svg?raw";
+import logo from "@images/logo.svg?raw";
 import {
   AppContentLayoutNav,
   ContentWidth,

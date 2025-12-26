@@ -43,7 +43,6 @@ export default defineConfig({
     laravel({
       input: ["resources/js/admin/main.js"],
       refresh: true,
-      buildDirectory: "build/admin",
     }),
     vueJsx(),
     vuetify({

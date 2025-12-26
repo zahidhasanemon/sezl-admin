@@ -66,7 +66,7 @@ Route::group([
         });
     });
 
-    Route::get('{any?}', function () {
-        return view('admin');
-    })->where('any', '.*');
+    // Route::get('{any?}', function () {
+    //     return view('admin');
+    // })->where('any', '.*');
 });

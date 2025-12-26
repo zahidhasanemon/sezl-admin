@@ -5,7 +5,7 @@ import { createPinia } from "pinia";
 import { createSSRApp, h } from "vue";
 import "../../css/frontend/app.css";
 
-import FrontendLayout from "./Layouts/FrontendLayout.vue";
+import BlankLayout from "./Layouts/BlankLayout.vue";
 
 export default function render(page) {
   return createInertiaApp({
@@ -18,7 +18,7 @@ export default function render(page) {
       );
 
       // Set default layout
-      page.default.layout = page.default.layout || FrontendLayout;
+      page.default.layout = page.default.layout || BlankLayout;
 
       return page;
     },

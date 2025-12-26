@@ -3,7 +3,7 @@
 import { useAuthStore } from '@/stores/auth'
 import { useAbility } from '@casl/vue'
 import { useGenerateImageVariant } from "@core/composable/useGenerateImageVariant"
-import logoSrc from "@images/logo-full-black.svg?url"
+import logoSrc from "@images/logo.svg?url"
 import authV2LoginIllustrationBorderedDark from "@images/pages/auth-v2-login-illustration-bordered-dark.png"
 import authV2LoginIllustrationBorderedLight from "@images/pages/auth-v2-login-illustration-bordered-light.png"
 import authV2LoginIllustrationDark from "@images/pages/auth-v2-login-illustration-dark.png"

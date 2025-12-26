@@ -8,7 +8,7 @@ import "vue3-toastify/dist/index.css";
 // Import Tailwind CSS for frontend only
 import "../../css/frontend/app.css";
 
-import FrontendLayout from "./Layouts/FrontendLayout.vue";
+import BlankLayout from "./Layouts/BlankLayout.vue";
 
 // Import progress indicator
 import { InertiaProgress } from "@inertiajs/progress";
@@ -27,7 +27,7 @@ createInertiaApp({
     );
 
     // Set default layout for all pages
-    page.default.layout = page.default.layout || FrontendLayout;
+    page.default.layout = page.default.layout || BlankLayout;
 
     return page;
   },

@@ -1,7 +1,7 @@
 <script setup>
 import { useAuthStore } from '@/stores/auth'
 import { useAbility } from '@casl/vue'
-import logoSrc from "@images/sa-logo-black.svg?url"
+import logoSrc from "@images/logo.svg?url"
 import authV1BottomShape from '@images/svg/auth-v1-bottom-shape.svg?raw'
 import authV1TopShape from '@images/svg/auth-v1-top-shape.svg?raw'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'

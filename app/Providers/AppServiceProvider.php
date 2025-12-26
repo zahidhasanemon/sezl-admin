@@ -31,11 +31,11 @@ class AppServiceProvider extends ServiceProvider
         //     Vite::useBuildDirectory('build/admin');
         // }
 
-        $path = request()->path();
+        // $path = request()->path();
 
-        if (str_starts_with($path, 'admin')) {
-            Vite::useBuildDirectory('build/admin');
-        }
+        // if (str_starts_with($path, 'admin')) {
+        //     Vite::useBuildDirectory('build/admin');
+        // }
 
         // Inertia::share([
         //     'auth.user' => function () {

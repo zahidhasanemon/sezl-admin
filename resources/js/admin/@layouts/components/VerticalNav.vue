@@ -1,6 +1,5 @@
 <script setup>
-import logoSrc from '@images/logo-full-black.svg?url'
-import shortLogoSrc from '@images/sa-logo-black.svg?url'
+import shortLogoSrc from '@images/logo.svg?url'
 import { layoutConfig } from '@layouts'
 import {
   VerticalNavGroup,
@@ -82,8 +81,7 @@ const hideTitleAndIcon = configStore.isVerticalNavMini(isHovered)
           <VImg :src="shortLogoSrc" alt="logo" height="40" width="40" cover />
 
           <Transition name="vertical-nav-app-title">
-            <VImg v-show="!hideTitleAndIcon" class="app-logo-title" :src="logoSrc" alt="logo" height="40" width="100"
-              cover />
+            SEZL
           </Transition>
         </RouterLink>
         <!-- 👉 Vertical nav actions -->

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="{{ asset('favicon.ico') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VuexyAdmin - Admin</title>
+    <title>SEZL - Admin</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('loader.css') }}" />
     @vite(['resources/js/admin/main.js'])
 </head>
@@ -14,7 +14,7 @@
     <div id="app">
         <div id="loading-bg">
             <div class="loading-logo">
-                <img src="{{ asset('images/sa-logo-black.svg') }}" alt="VuexyAdmin Logo" width="120" />
+                <img src="{{ asset('logo.jpg') }}" alt="SEZL Logo" width="120" />
             </div>
             <!-- <div class=" loading">
                 <div class="effect-1 effects"></div>

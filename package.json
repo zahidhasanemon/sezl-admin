@@ -4,10 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev:admin": "vite --config vite.admin.config.js",
-    "dev:front": "vite --config vite.frontend.config.js",
-    "build:admin": "vite build --config vite.admin.config.js",
-    "build:front": "vite build --config vite.frontend.config.js && vite build --ssr --config vite.frontend.config.js",
+    "dev": "vite --config vite.admin.config.js",
+    "build": "vite build --config vite.admin.config.js",
     "lint": "eslint . -c .eslintrc.cjs --fix --ext .ts,.js,.cjs,.vue,.tsx,.jsx",
     "build:icons": "tsx resources/js/admin/plugins/iconify/build-icons.js",
     "msw:init": "msw init public/ --save",
