@@ -36,7 +36,7 @@ class InquiryController extends Controller
             $orderBy = 'desc';
         }
 
-        $query = Inquiry::with(['user', 'resolver'])
+        $query = Inquiry::with(['resolver'])
             ->orderBy($sortBy, $orderBy);
 
         // Filter by status

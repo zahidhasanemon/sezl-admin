@@ -42,14 +42,6 @@ class Inquiry extends Model
     }
 
     /**
-     * Get the user if the inquiry was added by an authenticated user.
-     */
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id')->withTrashed();
-    }
-
-    /**
      * Get the admin that resolved the inquiry.
      */
     public function resolver(): BelongsTo

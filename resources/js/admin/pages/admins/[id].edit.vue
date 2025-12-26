@@ -13,7 +13,6 @@ const router = useRouter()
 const userId = ref(0)
 const name = ref("")
 const email = ref("")
-const phone = ref("")
 const avatar = ref(null)
 const status = ref(true)
 const existingAvatar = ref()
@@ -24,7 +23,6 @@ const loggedinUser = authStore.adminData
 const errors = ref({
   name: undefined,
   email: undefined,
-  phone: undefined,
   avatar: undefined,
   status: undefined,
 })
@@ -38,7 +36,6 @@ const fetchUser = data._value.data.admin
 
 name.value = fetchUser.name || ""
 email.value = fetchUser.email || ""
-phone.value = fetchUser.phone || ""
 status.value = fetchUser.status == 1 ? true : false
 existingAvatar.value = fetchUser.avatar || null
 
@@ -64,7 +61,6 @@ const onSubmit = () => {
 
       formData.append('name', name.value)
       formData.append('email', email.value)
-      formData.append('phone', phone.value)
       formData.append('status', status.value ? '1' : '0')
 
       if (avatar.value && avatar.value.length > 0) {
@@ -133,19 +129,15 @@ definePage({
           <!-- 👉 Form -->
           <VForm ref="refUpdateForm" @submit.prevent="onSubmit">
             <VRow>
-              <VCol cols="12" md="4">
+              <VCol cols="12" md="6">
                 <AppTextField v-model="name" label="Name" placeholder="Enter Name" class="mb-3 required"
                   persistent-placeholder :rules="[requiredValidator]" :error-messages="errors.name" />
               </VCol>
-              <VCol cols="12" md="4">
+              <VCol cols="12" md="6">
                 <AppTextField v-model="email" label="Email" placeholder="Enter Email" class="mb-3 required"
                   persistent-placeholder :rules="[requiredValidator, emailValidator]" :error-messages="errors.email" />
               </VCol>
-              <VCol cols="12" md="4">
-                <AppTextField v-model="phone" label="Phone" placeholder="Enter Phone" class="mb-3"
-                  persistent-placeholder :error-messages="errors.phone" />
-              </VCol>
-              <VCol cols="12" md="4" class="d-flex gap-2 pb-1">
+              <VCol cols="12" md="6" class="d-flex gap-2 pb-1">
                 <VFileInput v-model="avatar" label="User Photo" class="mb-3" accept=".jpeg,.png,.jpg,.gif,.svg,.webp"
                   :error-messages="errors.avatar" @update:model-value="loadImage" />
 

@@ -24,8 +24,6 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('password')->nullable();
             $table->date('dob')->nullable();
-            $table->integer('order_count')->default(0);
-            $table->decimal('order_total', 10, 2)->default(0);
             $table->tinyInteger('status')->default(0);
             $table->rememberToken();
             $table->timestamps();

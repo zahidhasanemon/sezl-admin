@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('inquiries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
@@ -28,7 +27,6 @@ return new class extends Migration
             $table->index('name');
             $table->index('email');
             $table->index('phone');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('resolved_by')->references('id')->on('admins');
         });
     }

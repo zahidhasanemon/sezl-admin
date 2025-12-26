@@ -8,7 +8,6 @@ const router = useRouter()
 
 const name = ref("")
 const email = ref("")
-const phone = ref("")
 const password = ref("")
 const passwordConfirmation = ref("")
 const avatar = ref()
@@ -20,7 +19,6 @@ const refCreateForm = ref()
 const errors = ref({
   name: undefined,
   email: undefined,
-  phone: undefined,
   password: undefined,
   passwordConfirmation: undefined,
   status: undefined,
@@ -35,7 +33,6 @@ const onSubmit = () => {
 
       formData.append('name', name.value)
       formData.append('email', email.value)
-      formData.append('phone', phone.value)
       formData.append('password', password.value)
       formData.append('password_confirmation', passwordConfirmation.value)
       formData.append('status', status.value ? '1' : '0')
@@ -111,17 +108,13 @@ definePage({
                 <AppTextField v-model="email" label="Email" placeholder="Enter Email" class="mb-3 required"
                   persistent-placeholder :rules="[requiredValidator, emailValidator]" :error-messages="errors.email" />
               </VCol>
-              <VCol cols="12" md="4">
-                <AppTextField v-model="phone" label="Phone" placeholder="Enter Phone" class="mb-3"
-                  persistent-placeholder :error-messages="errors.phone" />
-              </VCol>
-              <VCol cols="12" md="4">
+              <VCol cols="12" md="6">
                 <AppTextField v-model="password" label="Password" :type="isPasswordVisible ? 'text' : 'password'"
                   :append-inner-icon="isPasswordVisible ? 'tabler-eye-off' : 'tabler-eye'" placeholder="Enter Password"
                   class="mb-3 required" :rules="[requiredValidator]" :error-messages="errors.password" autocomplete="on"
                   @click:append-inner="isPasswordVisible = !isPasswordVisible" />
               </VCol>
-              <VCol cols="12" md="4">
+              <VCol cols="12" md="6">
                 <AppTextField v-model="passwordConfirmation" label="Confirm Password"
                   :type="isConfirmPasswordVisible ? 'text' : 'password'" placeholder="Confirm Password"
                   persistent-placeholder class="mb-3 required"
@@ -130,7 +123,7 @@ definePage({
                   :error-messages="errors.passwordConfirmation" autocomplete="on"
                   @click:append-inner="isConfirmPasswordVisible = !isConfirmPasswordVisible" />
               </VCol>
-              <VCol cols="12" md="4">
+              <VCol cols="12" md="6">
                 <VFileInput class="overflow-hidden" v-model="avatar" label="User Photo"
                   accept=".jpeg,.png,.jpg,.gif,.svg,.webp" :error-messages="errors.avatar" />
               </VCol>

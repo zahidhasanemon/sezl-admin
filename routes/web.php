@@ -7,7 +7,3 @@ use Illuminate\Support\Facades\Route;
 //         return view('application');
 //     })->where('any', '.*');
 // });
-
-Route::get('{any?}', function () {
-    return view('admin');
-})->where('any', '.*');

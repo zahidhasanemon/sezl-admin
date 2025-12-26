@@ -42,10 +42,6 @@ const headers = [
     key: 'email',
   },
   {
-    title: 'Phone',
-    key: 'phone',
-  },
-  {
     title: 'Status',
     key: 'status',
   },

@@ -65,8 +65,8 @@ Route::group([
             Route::get('inquiries', [InquiryController::class, 'index']);
         });
     });
-
-    // Route::get('{any?}', function () {
-    //     return view('admin');
-    // })->where('any', '.*');
 });
+
+Route::get('{any?}', function () {
+    return view('admin');
+})->where('any', '.*');

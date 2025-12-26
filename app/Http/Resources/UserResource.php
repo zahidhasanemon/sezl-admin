@@ -24,7 +24,6 @@ class UserResource extends JsonResource
             'dob' => $this->dob ?? null,
             'avatar' => $this->avatar ?? null,
             'email_verified_at' => $this->email_verified_at ?? null,
-            'notification_count' => $this->unread_notifications_count ?? 0,
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

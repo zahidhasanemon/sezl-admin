@@ -15,91 +15,12 @@ class AdminController extends Controller
 {
     public function dashboard(Request $request)
     {
-        // Get orders for today and yesterday
-        $todayStart = now()->startOfDay();
-        $todayEnd = now()->endOfDay();
-        $yesterdayStart = now()->subDay()->startOfDay();
-        $yesterdayEnd = now()->subDay()->endOfDay();
-
-        $ordersToday = 0;
-        $ordersYesterday = 0;
-
-        // Calculate percentage change for orders
-        $ordersChange = $ordersYesterday > 0
-            ? (($ordersToday - $ordersYesterday) / $ordersYesterday) * 100
-            : 0;
-
-        // Get sales for this year and last year for comparison
-        $thisYearStart = now()->startOfYear();
-        $thisYearEnd = now()->endOfYear();
-        $lastYearStart = now()->subYear()->startOfYear();
-        $lastYearEnd = now()->subYear()->endOfYear();
-
-        $salesThisYear = 0;
-
-        $salesLastYear = 0;
-
-        // Calculate percentage change for sales
-        $salesChange = $salesLastYear > 0
-            ? (($salesThisYear - $salesLastYear) / $salesLastYear) * 100
-            : 0;
-
-        $totalCustomers = User::count();
-        $totalProducts = 0;
-
-        // Define all possible statuses
-        $allStatuses = [
-            'pending' => 'Pending',
-            'confirmed' => 'Confirmed',
-            'processing' => 'Processing',
-            'in_transit' => 'In Transit',
-            'delivered' => 'Delivered',
-            'cancelled' => 'Cancelled',
-        ];
-
-        // Get status counts using group by
-        $statusCountsQuery = [];
-
-        // Ensure all statuses are included
-        $completeStatusCounts = [];
-        foreach ($allStatuses as $statusKey => $statusLabel) {
-            $completeStatusCounts[$statusKey] = [
-                'label' => $statusLabel,
-                'count' => isset($statusCountsQuery[$statusKey]) ? $statusCountsQuery[$statusKey] : 0
-            ];
-        }
-
-        // Refunded orders count and total amount
-        $totalRefundedOrders = 0;
-        $totalRefundedAmount = 0;
-
-        // Get total counts
-        $totalOrders = 0;
-        $totalSalesForOrders = 0;
-
         $success = [
             'summaries' => [
-                'orders_today' => [
-                    'count' => $ordersToday,
-                    'change' => round($ordersChange, 1)
-                ],
-                'orders_yesterday' => [
-                    'count' => $ordersYesterday,
-                ],
-                'sales_this_year' => [
-                    'amount' => $salesThisYear,
-                    'change' => round($salesChange, 1)
-                ],
-                'statistics' => [
-                    'total_orders' => $totalOrders,
-                    'products' => $totalProducts,
-                    'customers' => $totalCustomers,
-                    'total_refunded_orders' => $totalRefundedOrders,
-                    'total_refunded_amount' => $totalRefundedAmount,
-                    'updated_at' => now()->subMonth()->toDateTimeString()
-                ],
-                'total_sales' => $totalSalesForOrders,
-                'status_counts' => $completeStatusCounts,
+                'total_pages' => 0,
+                'total_open_jobs' => 5,
+                'total_job_applications' => 15,
+                'total_contact_messages' => 10,
             ],
         ];
 
@@ -119,7 +40,7 @@ class AdminController extends Controller
         $orderBy = $request->get('orderBy', 'desc');
 
         // Define eligible fields for ordering
-        $eligibleOrderByFields = ['id', 'name', 'email', 'phone', 'created_at', 'updated_at'];
+        $eligibleOrderByFields = ['id', 'name', 'email', 'created_at', 'updated_at'];
         $eligibleDirections = ['asc', 'desc'];
 
         // Validate orderBy field
@@ -137,8 +58,7 @@ class AdminController extends Controller
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
-                    ->orWhere('email', 'like', "%{$search}%")
-                    ->orWhere('phone', 'like', "%{$search}%");
+                    ->orWhere('email', 'like', "%{$search}%");
             });
         }
 

@@ -34,8 +34,6 @@ class User extends Authenticatable implements HasMedia
         'phone',
         'dob',
         'password',
-        'order_count',
-        'order_total',
         'status',
         'deleted_at'
     ];
@@ -79,23 +77,6 @@ class User extends Authenticatable implements HasMedia
     protected $with = ['media'];
 
     /**
-     * Get the notifications for the user.
-     */
-    public function notifications(): HasMany
-    {
-        return $this->hasMany(Notification::class, 'user_id');
-    }
-
-    /**
-     * Get unread notifications for the user.
-     */
-    public function unreadNotifications(): HasMany
-    {
-        return $this->hasMany(Notification::class, 'user_id')
-            ->where('is_read', false);
-    }
-
-    /**
      * Get the full name attribute.
      *
      * @return string | null
@@ -133,27 +114,5 @@ class User extends Authenticatable implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('avatar')->singleFile();
-    }
-
-    /**
-     * Specifies the user's FCM tokens
-     *
-     * @return string|array
-     */
-    public function routeNotificationForFcm()
-    {
-        // return $this->token;
-        $tokens = $this->deviceTokens->pluck('token', 'token')->all();
-        return $tokens;
-    }
-
-    /**
-     * Get the device tokens for the user.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function deviceTokens(): HasMany
-    {
-        return $this->hasMany(DeviceToken::class, 'user_id');
     }
 }

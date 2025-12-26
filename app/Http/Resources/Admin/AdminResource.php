@@ -19,7 +19,6 @@ class AdminResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'phone' => $this->phone,
             'avatar' => $this->getFirstMediaUrl('avatar') ?: null,
             'status' => (int) $this->status,
             'status_text' => Helpers::apiActiveStatus($this->status),

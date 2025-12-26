@@ -5,12 +5,7 @@ export default [
     to: "dashboard",
   },
   {
-    title: "Customers",
-    icon: { icon: "tabler-users" },
-    to: "customers",
-  },
-  {
-    title: "Inquiries",
+    title: "Contact Submissions",
     icon: { icon: "tabler-question-mark" },
     to: "inquiries",
   },

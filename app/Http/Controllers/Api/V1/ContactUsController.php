@@ -52,8 +52,7 @@ class ContactUsController extends Controller
     public function contactUs(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => [
                 'required',
                 'string',
@@ -72,26 +71,25 @@ class ContactUsController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
+                'errors' => $validator->errors(),
                 'message' => $validator->errors()->first()
             ], 422);
         }
 
         try {
-            $request['name'] = $request->first_name . ' ' . $request->last_name;
-            if ($request->user) {
-                $request['user_id'] = $request->user->id;
-            }
             Inquiry::create($request->only(['name', 'email', 'phone', 'subject', 'message']));
         } catch (\Exception $e) {
             Log::error('Email verification failed', ['error' => $e->getMessage()]);
             return response()->json([
                 'success' => false,
+                'errors' => [],
                 'message' => 'There was an error processing your request. Please try again later.'
             ], 500);
         }
 
         $success = [
             'success' => true,
+            'errors' => [],
             'message' => 'Your message has been received. We will get back to you shortly.',
         ];
 
