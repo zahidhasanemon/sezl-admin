@@ -86,7 +86,7 @@ export const useApi = createFetch({
         useCookie("adminAbilityRules").value = null;
 
         // Redirect to login page
-        window.location.href = "/admin/login";
+        window.location.href = "/login";
       }
 
       // Return modified context with parsed error data

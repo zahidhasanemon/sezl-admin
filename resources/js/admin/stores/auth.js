@@ -29,7 +29,7 @@ export const useAuthStore = defineStore("auth", {
       useCookie("adminAbilityRules").value = null;
       useCookie("adminAccessToken").value = null;
 
-      router.replace("/admin/login");
+      router.replace("/login");
     },
   },
 });
