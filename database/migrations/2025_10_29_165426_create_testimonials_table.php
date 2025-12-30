@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->default('client')->comment('client, graduate');
             $table->string('name');
-            $table->text('address')->nullable();
+            $table->string('position')->nullable();
+            $table->integer('rating')->default(0)->nullable();
             $table->text('testimonial')->nullable();
+            $table->boolean('featured')->default(false);
             $table->boolean('status')->default(true);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -23,6 +26,7 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->index('name');
+            $table->index('type');
             $table->foreign('created_by')->references('id')->on('admins');
             $table->foreign('updated_by')->references('id')->on('admins');
         });

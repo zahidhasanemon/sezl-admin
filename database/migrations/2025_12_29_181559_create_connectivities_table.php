@@ -13,7 +13,20 @@ return new class extends Migration
     {
         Schema::create('connectivities', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->nullable()->comment('accessibility, zone etc');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('icon')->nullable();
+            $table->boolean('status')->default(true);
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index('type');
+            $table->index('title');
+            $table->foreign('created_by')->references('id')->on('admins');
+            $table->foreign('updated_by')->references('id')->on('admins');
         });
     }
 

@@ -3,16 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Support\Facades\Cache;
 
-class Testimonial extends Model implements HasMedia
+class SiteAsset extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -20,38 +19,16 @@ class Testimonial extends Model implements HasMedia
      * @var list<string>
      */
     protected $fillable = [
-        'type',
-        'name',
-        'position',
-        'rating',
-        'testimonial',
-        'featured',
-        'status',
         'created_by',
         'updated_by',
-        'deleted_at'
     ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'status' => 'boolean',
-            'featured' => 'boolean',
-            'deleted_at' => 'datetime',
-        ];
-    }
 
     /**
      * The accessors to append to the model's array form.
      *
      * @return array<string>
      */
-    protected $appends = ['avatar'];
+    protected $appends = ['logo', 'favicon'];
 
     /**
      * The relationships to always load with the model.
@@ -68,15 +45,15 @@ class Testimonial extends Model implements HasMedia
     protected static function booted()
     {
         static::created(function () {
-            Cache::forget("testimonials");
+            Cache::forget("site_assets");
         });
 
         static::updated(function () {
-            Cache::forget("testimonials");
+            Cache::forget("site_assets");
         });
 
         static::deleted(function () {
-            Cache::forget("testimonials");
+            Cache::forget("site_assets");
         });
     }
 
@@ -97,13 +74,23 @@ class Testimonial extends Model implements HasMedia
     }
 
     /**
-     * Get the avatar attribute.
+     * Get the logo attribute.
      *
      * @return string | null
      */
-    public function getAvatarAttribute()
+    public function getLogoAttribute()
     {
-        return $this->getFirstMediaUrl('avatar');
+        return $this->getFirstMediaUrl('logo');
+    }
+
+    /**
+     * Get the favicon attribute.
+     *
+     * @return string | null
+     */
+    public function getFaviconAttribute()
+    {
+        return $this->getFirstMediaUrl('favicon');
     }
 
     /**
@@ -113,6 +100,7 @@ class Testimonial extends Model implements HasMedia
      */
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('avatar')->singleFile();
+        $this->addMediaCollection('logo')->singleFile();
+        $this->addMediaCollection('favicon')->singleFile();
     }
 }

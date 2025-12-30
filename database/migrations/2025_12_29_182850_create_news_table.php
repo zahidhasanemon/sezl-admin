@@ -13,7 +13,19 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
+            $table->string('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('status')->default('published');
+            $table->dateTime('published_at')->nullable();
+            $table->string('video_url')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index('title');
+            $table->foreign('created_by')->references('id')->on('admins');
+            $table->foreign('updated_by')->references('id')->on('admins');
         });
     }
 

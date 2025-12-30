@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('category_news', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('news_category_id');
+            $table->unsignedBigInteger('news_id');
             $table->timestamps();
+
+            $table->foreign('news_category_id')->references('id')->on('news_categories');
+            $table->foreign('news_id')->references('id')->on('news');
         });
     }
 

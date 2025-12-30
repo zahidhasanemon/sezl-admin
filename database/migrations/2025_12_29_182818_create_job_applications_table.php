@@ -13,7 +13,19 @@ return new class extends Migration
     {
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('career_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->text('cover_letter')->nullable();
+            $table->string('status')->nullable()->default('pending');
+            $table->unsignedBigInteger('resolved_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index('name');
+            $table->foreign('career_id')->references('id')->on('careers');
+            $table->foreign('resolved_by')->references('id')->on('admins');
         });
     }
 

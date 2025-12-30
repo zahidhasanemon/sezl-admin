@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('academic_overviews', function (Blueprint $table) {
             $table->id();
+            $table->longText('description')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
+
+            $table->foreign('created_by')->references('id')->on('admins');
+            $table->foreign('updated_by')->references('id')->on('admins');
         });
     }
 

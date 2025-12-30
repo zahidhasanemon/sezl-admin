@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('gallery_types', function (Blueprint $table) {
             $table->id();
+            $table->longText('name')->nullable();
+            $table->boolean('status')->default(true);
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index('name');
+            $table->foreign('created_by')->references('id')->on('admins');
+            $table->foreign('updated_by')->references('id')->on('admins');
         });
     }
 

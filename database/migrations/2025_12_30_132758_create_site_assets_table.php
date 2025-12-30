@@ -11,19 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('history_timelines', function (Blueprint $table) {
+        Schema::create('site_assets', function (Blueprint $table) {
             $table->id();
-            $table->string('year')->nullable();
-            $table->string('title')->nullable();
-            $table->text('description')->nullable();
-            $table->boolean('status')->default(true);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
-            $table->softDeletes();
 
-            $table->index('year');
-            $table->index('title');
             $table->foreign('created_by')->references('id')->on('admins');
             $table->foreign('updated_by')->references('id')->on('admins');
         });
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('history_timelines');
+        Schema::dropIfExists('site_assets');
     }
 };

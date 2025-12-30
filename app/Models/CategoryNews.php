@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class CategoryNews extends Model
 {
-    //
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'news_category_id',
+        'news_id',
+    ];
 }
