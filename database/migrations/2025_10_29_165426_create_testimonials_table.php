@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('type')->default('client')->comment('client, graduate');
             $table->string('name');
             $table->string('position')->nullable();
+            $table->string('company_name')->nullable();
             $table->integer('rating')->default(0)->nullable();
             $table->text('testimonial')->nullable();
             $table->boolean('featured')->default(false);

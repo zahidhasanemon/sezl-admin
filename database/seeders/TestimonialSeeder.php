@@ -16,9 +16,13 @@ class TestimonialSeeder extends Seeder
     {
         $testimonials = [
             [
+                'type' => 'client',
                 'name' => 'Sarah Johnson',
-                'address' => 'New York, USA',
-                'testimonial' => 'Absolutely love the silk products! The quality is exceptional and my skin feels so much softer. Highly recommend VuexyAdmin to anyone looking for premium skincare.',
+                'position' => 'CEO',
+                'company_name' => 'Vex Footwear',
+                'rating' => 5,
+                'testimonial' => 'SEZL gives us the best in class facilities and support to grow our business internationally.',
+                'featured' => true,
                 'status' => true,
                 'created_by' => 1,
                 'updated_by' => 1,
@@ -26,62 +30,40 @@ class TestimonialSeeder extends Seeder
                 'updated_at' => Carbon::now()->subDays(10),
             ],
             [
-                'name' => 'Michael Chen',
-                'address' => 'California, USA',
-                'testimonial' => 'The silk face mask is a game changer! I\'ve been using it for 3 months and the results are incredible. My complexion has never looked better.',
+                'type' => 'client',
+                'name' => 'Ben Anderson',
+                'position' => 'CEO',
+                'company_name' => 'Red Denim Apparel',
+                'rating' => 5,
+                'testimonial' => 'SEZ is in a prime location with excellent infrastructure, making it easy for us to manage our operations efficiently.',
+                'featured' => true,
                 'status' => true,
                 'created_by' => 1,
                 'updated_by' => 1,
-                'created_at' => Carbon::now()->subDays(15),
-                'updated_at' => Carbon::now()->subDays(15),
+                'created_at' => Carbon::now()->subDays(10),
+                'updated_at' => Carbon::now()->subDays(10),
             ],
             [
-                'name' => 'Emma Rodriguez',
-                'address' => 'Texas, USA',
-                'testimonial' => 'Amazing customer service and even better products. The silk serum has transformed my nighttime routine. Worth every penny!',
+                'type' => 'graduate',
+                'name' => 'Emily Davis',
+                'position' => 'Marketing Manager',
+                'company_name' => null,
+                'rating' => 5,
+                'testimonial' => 'SEZ Academy provided me with the skills and knowledge needed to excel in my career. The hands-on training and experienced instructors made all the difference.',
+                'featured' => false,
                 'status' => true,
                 'created_by' => 1,
                 'updated_by' => 1,
-                'created_at' => Carbon::now()->subDays(8),
-                'updated_at' => Carbon::now()->subDays(8),
+                'created_at' => Carbon::now()->subDays(10),
+                'updated_at' => Carbon::now()->subDays(10),
             ],
-            [
-                'name' => 'David Thompson',
-                'address' => 'Florida, USA',
-                'testimonial' => 'Great products with fast shipping. The silk moisturizer works wonderfully for my sensitive skin. Will definitely order again.',
-                'status' => true,
-                'created_by' => 1,
-                'updated_by' => 1,
-                'created_at' => Carbon::now()->subDays(5),
-                'updated_at' => Carbon::now()->subDays(5),
-            ],
-            [
-                'name' => 'Lisa Wang',
-                'address' => 'Washington, USA',
-                'testimonial' => 'I was skeptical at first, but VuexyAdmin has exceeded my expectations. The silk essence has made my skin glow like never before.',
-                'status' => true,
-                'created_by' => 1,
-                'updated_by' => 1,
-                'created_at' => Carbon::now()->subDays(20),
-                'updated_at' => Carbon::now()->subDays(20),
-            ],
-            [
-                'name' => 'James Miller',
-                'address' => 'Illinois, USA',
-                'testimonial' => 'Excellent quality and packaging. The silk cream feels luxurious and has helped with my dry skin issues significantly.',
-                'status' => true,
-                'created_by' => 1,
-                'updated_by' => 1,
-                'created_at' => Carbon::now()->subDays(12),
-                'updated_at' => Carbon::now()->subDays(12),
-            ]
         ];
 
         $filePath = public_path('images/avatars/avatar-1.png');
         foreach ($testimonials as $testimonial) {
             $testimonialData = Testimonial::firstOrCreate([
                 'name' => $testimonial['name'],
-                'address' => $testimonial['address'],
+                'position' => $testimonial['position'],
             ], $testimonial);
             if ($testimonialData->getMedia('avatar')->isEmpty()) {
                 $testimonialData->addMedia($filePath)->preservingOriginal()->toMediaCollection('avatar');

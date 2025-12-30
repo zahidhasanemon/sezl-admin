@@ -11,6 +11,7 @@ return [
     'mail_from_email' => env('MAIL_FROM_ADDRESS', 'info@sezl-admin.com'),
     'settings' => [
         'site_name' => 'site_name',
+        'site_title' => 'site_title',
         'site_email' => 'site_email',
         'site_contact_numbers' => 'site_contact_numbers',
         'site_address' => 'site_address',
@@ -22,5 +23,20 @@ return [
         'site_tiktok_url' => 'site_tiktok_url',
         'site_whatsapp_number' => 'site_whatsapp_number',
         'site_footer_content' => 'site_footer_content',
+    ],
+    'testimonial_types' => [
+        'client' => 'Client',
+        'graduate' => 'Graduate',
+    ],
+    'card_types' => [
+        'why_us_bd' => 'why_us_bd',
+        'why_us_sezl' => 'why_us_sezl',
+        'why_us_partner' => 'why_us_partner',
+        'why_us_incentive' => 'why_us_incentive',
+        'facilities_infrastructure' => 'facilities_infrastructure',
+        'facilities_business' => 'facilities_business',
+        'training' => 'training',
+        'zone_highlights' => 'zone_highlights',
+        'career' => 'career',
     ],
 ];

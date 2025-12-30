@@ -23,6 +23,7 @@ class Testimonial extends Model implements HasMedia
         'type',
         'name',
         'position',
+        'company_name',
         'rating',
         'testimonial',
         'featured',
