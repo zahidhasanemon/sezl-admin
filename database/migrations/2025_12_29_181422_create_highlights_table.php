@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('value')->nullable();
-            $table->boolean('home_page')->default(false);
+            $table->boolean('home_page_top')->default(false);
+            $table->boolean('home_page_middle')->default(false);
             $table->boolean('about_page')->default(false);
             $table->boolean('invest_bd_page')->default(false);
             $table->boolean('invest_sezl_page')->default(false);

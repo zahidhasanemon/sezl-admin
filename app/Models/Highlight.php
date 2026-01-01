@@ -20,7 +20,8 @@ class Highlight extends Model
     protected $fillable = [
         'title',
         'value',
-        'home_page',
+        'home_page_top',
+        'home_page_middle',
         'about_page',
         'invest_bd_page',
         'invest_sezl_page',
