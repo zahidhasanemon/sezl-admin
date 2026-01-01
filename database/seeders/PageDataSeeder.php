@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\{HomePageContent, AboutUsContent, HistoryTimeline, AcademicOverview, Highlight};
+use App\Models\{HomePageContent, CardItem, AboutUsContent, HistoryTimeline, AcademicOverview, Highlight};
 
 class PageDataSeeder extends Seeder
 {
@@ -36,6 +36,131 @@ class PageDataSeeder extends Seeder
         if ($homePageContent->getMedia('hero_media')->isEmpty()) {
             $homePageContent->addMedia($heroImagePath)->preservingOriginal()->toMediaCollection('hero_media');
         }
+
+        if ($homePageContent->getMedia('partners')->isEmpty()) {
+            $partner1 = public_path('images/frontend/company1.png');
+            $partner2 = public_path('images/frontend/company2.png');
+            $partner3 = public_path('images/frontend/company3.png');
+            $partner4 = public_path('images/frontend/company4.png');
+            $partner5 = public_path('images/frontend/company5.png');
+            $homePageContent->addMedia($partner1)->preservingOriginal()->toMediaCollection('partners');
+            $homePageContent->addMedia($partner2)->preservingOriginal()->toMediaCollection('partners');
+            $homePageContent->addMedia($partner3)->preservingOriginal()->toMediaCollection('partners');
+            $homePageContent->addMedia($partner4)->preservingOriginal()->toMediaCollection('partners');
+            $homePageContent->addMedia($partner5)->preservingOriginal()->toMediaCollection('partners');
+        }
+
+        CardItem::updateOrCreate(
+            [
+                'type' => config('constants.card_types.core_services'),
+                'title' => 'Legal service',
+            ],
+            [
+                'description' => null,
+                'icon' => 'fa-solid fa-file-invoice-dollar',
+                'status' => true,
+                'created_by' => 1,
+                'updated_by' => 1,
+            ]
+        );
+
+        CardItem::updateOrCreate(
+            [
+                'type' => config('constants.card_types.core_services'),
+                'title' => 'Human Resource',
+            ],
+            [
+                'description' => null,
+                'icon' => 'fa-solid fa-person-digging',
+                'status' => true,
+                'created_by' => 1,
+                'updated_by' => 1,
+            ]
+        );
+
+        CardItem::updateOrCreate(
+            [
+                'type' => config('constants.card_types.core_services'),
+                'title' => 'Manufacturing service',
+            ],
+            [
+                'description' => null,
+                'icon' => 'fa-solid fa-gear',
+                'status' => true,
+                'created_by' => 1,
+                'updated_by' => 1,
+            ]
+        );
+
+        CardItem::updateOrCreate(
+            [
+                'type' => config('constants.card_types.core_services'),
+                'title' => 'Administrative service',
+            ],
+            [
+                'description' => null,
+                'icon' => 'fa-solid fa-user-tie',
+                'status' => true,
+                'created_by' => 1,
+                'updated_by' => 1,
+            ]
+        );
+
+        CardItem::updateOrCreate(
+            [
+                'type' => config('constants.card_types.home_bd'),
+                'title' => 'Continuous GDP Growth',
+            ],
+            [
+                'description' => 'Ranked 39th worldwide with 8.2% GDP rate in 2019, Bangladesh has made a major advancement in the economic sector.',
+                'icon' => 'fa-solid fa-trophy',
+                'status' => true,
+                'created_by' => 1,
+                'updated_by' => 1,
+            ]
+        );
+
+        CardItem::updateOrCreate(
+            [
+                'type' => config('constants.card_types.home_bd'),
+                'title' => 'Strategic Location',
+            ],
+            [
+                'description' => 'The location of Bangladesh in South Asia makes it very convenient for any successful industrial venture.',
+                'icon' => 'fa-solid fa-shield',
+                'status' => true,
+                'created_by' => 1,
+                'updated_by' => 1,
+            ]
+        );
+
+        CardItem::updateOrCreate(
+            [
+                'type' => config('constants.card_types.home_bd'),
+                'title' => 'Cost-efficient Human Resource',
+            ],
+            [
+                'description' => "Compared to the manpower of other industrially enriched countries, managing Bangladesh's workforce is much more cost-effective.",
+                'icon' => 'fa-solid fa-folder',
+                'status' => true,
+                'created_by' => 1,
+                'updated_by' => 1,
+            ]
+        );
+
+        CardItem::updateOrCreate(
+            [
+                'type' => config('constants.card_types.home_bd'),
+                'title' => 'Energetic Manpower',
+            ],
+            [
+                'description' => "Bangladesh has produced a vast number of skilled workforce in recent years who are prepared for diversified industrial activities.",
+                'icon' => 'fa-solid fa-handshake',
+                'status' => true,
+                'created_by' => 1,
+                'updated_by' => 1,
+            ]
+        );
 
         $about1 = public_path('images/frontend/about1.jpg');
         $about2 = public_path('images/frontend/about2.png');

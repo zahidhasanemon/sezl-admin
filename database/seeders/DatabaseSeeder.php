@@ -35,7 +35,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             // WorldSeeder::class,
-            UserSeeder::class,
+            // UserSeeder::class,
+            PageDataSeeder::class,
             SiteSettingSeeder::class,
             TestimonialSeeder::class,
         ]);
