@@ -19,6 +19,7 @@ class HomePageContent extends Model implements HasMedia
      */
     protected $fillable = [
         'hero_title',
+        'hero_media_type',
         'hero_description',
         'about_us_title',
         'about_us_description',
@@ -131,7 +132,7 @@ class HomePageContent extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('hero_media')->singleFile();
-        $this->addMediaCollection('partners')->multipleFiles();
+        $this->addMediaCollection('partners');
         $this->addMediaCollection('about_us_first')->singleFile();
         $this->addMediaCollection('about_us_second')->singleFile();
         $this->addMediaCollection('about_us_third')->singleFile();

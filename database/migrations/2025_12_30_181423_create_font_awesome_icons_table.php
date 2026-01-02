@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('font_awesome_icons', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('style');
             $table->string('prefix');
             $table->text('categories')->nullable();

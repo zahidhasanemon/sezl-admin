@@ -41,7 +41,7 @@ class FontAwesomeIcon extends Model
     // Accessor for full icon class
     public function getFullClassAttribute(): string
     {
-        return "{$this->prefix} fa-{$this->name}";
+        return "fa-{$this->prefix} fa-{$this->name}";
     }
 
     // Accessor for display name (formatted)

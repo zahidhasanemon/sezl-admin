@@ -102,6 +102,6 @@ class AcademicOverview extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('overview_image')->singleFile();
-        $this->addMediaCollection('partners')->multipleFiles();
+        $this->addMediaCollection('partners');
     }
 }

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('home_page_contents', function (Blueprint $table) {
             $table->id();
             $table->string('hero_title')->nullable();
+            $table->string('hero_media_type')->default('image');
             $table->text('hero_description')->nullable();
             $table->string('about_us_title')->nullable();
             $table->text('about_us_description')->nullable();
