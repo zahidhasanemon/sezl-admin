@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TestimonialResource extends JsonResource
+class CardItemResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,9 @@ class TestimonialResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'position' => $this->position,
-            'company_name' => $this->company_name,
-            'rating' => $this->rating,
-            'avatar' => $this->avatar ?? null,
-            'testimonial' => $this->testimonial,
+            'title' => $this->title,
+            'description' => $this->description,
+            'icon' => $this->icon,
         ];
     }
 }

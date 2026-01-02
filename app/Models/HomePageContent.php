@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Support\Facades\Cache;
 
 class HomePageContent extends Model implements HasMedia
 {
@@ -40,6 +41,26 @@ class HomePageContent extends Model implements HasMedia
      * @return array<string>
      */
     protected $appends = ['hero_media', 'partners', 'about_us_first', 'about_us_second', 'about_us_third', 'middle_banner'];
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function () {
+            Cache::forget("home_page_content");
+        });
+
+        static::updated(function () {
+            Cache::forget("home_page_content");
+        });
+
+        static::deleted(function () {
+            Cache::forget("home_page_content");
+        });
+    }
 
     /**
      * The relationships to always load with the model.

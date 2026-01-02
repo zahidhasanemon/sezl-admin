@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\{BelongsTo, BelongsToMany};
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cache;
 
 class News extends Model implements HasMedia
 {
@@ -40,6 +41,26 @@ class News extends Model implements HasMedia
             'published_at' => 'datetime',
             'deleted_at' => 'datetime',
         ];
+    }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function () {
+            Cache::forget("home_news");
+        });
+
+        static::updated(function () {
+            Cache::forget("home_news");
+        });
+
+        static::deleted(function () {
+            Cache::forget("home_news");
+        });
     }
 
     /**

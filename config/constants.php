@@ -25,8 +25,8 @@ return [
         'site_footer_content' => 'site_footer_content',
     ],
     'testimonial_types' => [
-        'client' => 'Client',
-        'graduate' => 'Graduate',
+        'client' => 'client',
+        'graduate' => 'graduate',
     ],
     'card_types' => [
         'home_bd' => 'home_bd',

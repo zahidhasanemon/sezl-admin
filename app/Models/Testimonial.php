@@ -69,15 +69,15 @@ class Testimonial extends Model implements HasMedia
     protected static function booted()
     {
         static::created(function () {
-            Cache::forget("testimonials");
+            Cache::forget("home_testimonials");
         });
 
         static::updated(function () {
-            Cache::forget("testimonials");
+            Cache::forget("home_testimonials");
         });
 
         static::deleted(function () {
-            Cache::forget("testimonials");
+            Cache::forget("home_testimonials");
         });
     }
 

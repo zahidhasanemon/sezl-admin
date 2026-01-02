@@ -56,15 +56,18 @@ class Highlight extends Model
     protected static function booted()
     {
         static::created(function () {
-            Cache::forget("highlights");
+            Cache::forget("home_top_highlights");
+            Cache::forget("home_middle_highlights");
         });
 
         static::updated(function () {
-            Cache::forget("highlights");
+            Cache::forget("home_top_highlights");
+            Cache::forget("home_middle_highlights");
         });
 
         static::deleted(function () {
-            Cache::forget("highlights");
+            Cache::forget("home_top_highlights");
+            Cache::forget("home_middle_highlights");
         });
     }
 

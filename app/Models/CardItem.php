@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Cache;
 
 class CardItem extends Model
 {
@@ -38,6 +39,29 @@ class CardItem extends Model
             'status' => 'boolean',
             'deleted_at' => 'datetime',
         ];
+    }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::created(function () {
+            Cache::forget("home_core_services");
+            Cache::forget("home_invest_bd");
+        });
+
+        static::updated(function () {
+            Cache::forget("home_core_services");
+            Cache::forget("home_invest_bd");
+        });
+
+        static::deleted(function () {
+            Cache::forget("home_core_services");
+            Cache::forget("home_invest_bd");
+        });
     }
 
     /**
