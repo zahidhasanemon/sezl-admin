@@ -105,7 +105,6 @@ const onSubmit = () => {
   })
 }
 
-
 definePage({
   meta: {
     action: ['user-admins-update'],

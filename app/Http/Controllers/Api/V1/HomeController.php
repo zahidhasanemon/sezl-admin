@@ -11,7 +11,7 @@ use App\Http\Resources\{HomePageContentResource, TestimonialResource, CardItemRe
 class HomeController extends Controller
 {
     /**
-     * home page notice pop up
+     * home page
      *
      * @return
      */

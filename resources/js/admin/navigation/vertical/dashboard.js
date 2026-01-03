@@ -24,6 +24,11 @@ export default [
     icon: { icon: "tabler-cast" },
     children: [
       {
+        title: "Home Page",
+        icon: { icon: "tabler-home" },
+        to: "pages-home",
+      },
+      {
         title: "Testimonials",
         icon: { icon: "tabler-thumb-up" },
         to: "testimonials",

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\{
     AdminController,
     AuthController,
     ProfileController,
+    PageController,
     TestimonialController,
     SettingController,
     InquiryController
@@ -46,6 +47,10 @@ Route::group([
             Route::post('admins/{id}/delete', [AdminController::class, 'destroy']);
             Route::post('admins/{id}/password', [AdminController::class, 'passwordUpdate']);
 
+            // pages
+            Route::get('home-page-content', [PageController::class, 'homePageContent']);
+            Route::post('home-page-content', [PageController::class, 'updateHomePageContent']);
+
             // Testimonials
             Route::get('testimonials', [TestimonialController::class, 'index']);
             Route::post('testimonials', [TestimonialController::class, 'store']);
@@ -55,12 +60,6 @@ Route::group([
 
             Route::get('settings', [SettingController::class, 'index']);
             Route::post('settings', [SettingController::class, 'store']);
-
-            Route::get('shipping-settings', [SettingController::class, 'shippingSettingsIndex']);
-            Route::post('shipping-settings', [SettingController::class, 'shippingSettingsStore']);
-
-            Route::get('page-settings/{type}', [SettingController::class, 'pageSettingsIndex']);
-            Route::post('page-settings/{type}', [SettingController::class, 'pageSettingsStore']);
 
             Route::get('inquiries', [InquiryController::class, 'index']);
         });
